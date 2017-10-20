@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\title{PIR}
+\author{Ian Martiny}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Client security is an increasingly important requirement of modern day tools.
+In a world where much of our data is stored online great care must be given to
+how data is stored. Recently there have been pushes to use encrypted databases.
+They claim that by encrypting the requests and data passive adversaries are
+unable to gain any information on either the query or the data returned. 
+
+This encryption ranges from end-to-end encryption between the client and server
+where the end data is still stored un-encrypted~\cite{mylar, arx}, to
+client-to-client encryption where the server itself does not know how to decrypt
+any information it is given~\cite{seabed,cryptdb}. However it has been 
+noticed~\cite{morningPaper} that these schemes do not prevent attackers from
+gaining information about queries and responses. Due to logging multiple
+requests and responses attackers can glean information about similar requests,
+even possibly reconstructing encrypted data.
+
+In this project we propose to augment this idea of encrypted databases to use
+private information retrieval (PIR)~\cite{PIR,CPIR}. PIR obscures information
+from adversaries and servers by allowing clients to provide randomly encrypted
+queries to the server that can then use these queries on their local storage to
+return the desired content. While similar to ideas presented in Seabed and
+CryptDB, computational PIR adds the benefit of randomized encryption, such that
+no query can be distinguished from any other query.
+
+\section{Contributions}
+In this project we will implement a PIR library that will allow others to easily
+add PIR security to their projects. Initially this will require a separate
+program to handle client interactions with servers, however eventually our goal
+is that this will be extended to allow online clients to simply make Javascript
+queries. 
+
+Additionally, a framework will be designed to allow clients to store and
+retrieve information from an example server.
+
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\end{document}
